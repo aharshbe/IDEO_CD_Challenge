@@ -1,3 +1,5 @@
+<%= stylesheet_link_tag "application" %>
+
 <div class="row">
   <div class="col-md-8">
     <div class="panel panel-primary">
@@ -6,13 +8,28 @@
           <%= @response.display_name %>
         </h3>
       </div>
-
       <div class="panel-body">
         Completed
         <%= @response.question_responses_count %>
         of
         <%= Question.count %>
         questions
+        <hr>
+        <strong> Purpose </strong>
+        <ul>
+          <li>Raw score:</li>
+          <li>Max score:</li>
+        </ul>
+        <strong> Empowerment </strong>
+        <ul>
+          <li>Raw score:</li>
+          <li>Max score:</li>
+        </ul>
+        <strong> Collaboration </strong>
+        <ul>
+          <li>Raw score:</li>
+          <li>Max score:</li>
+        </ul>
       </div>
     </div>
 
@@ -26,11 +43,23 @@
           <tr>
             <td>
               <% if question_choice == question_response.question_choice %>
-                <strong>
-                  <%= question_choice.text %>
-                </strong>
+                  <% if question_choice.score >= 0 %>
+                    <strong>
+                      <%= question_choice.text %>
+                    </strong>
+                    <p class="color_green">
+                      <%= question_choice.creative_quality.name %> <%= question_choice.score %> 
+                    </p>    
+                    <% else %>
+                    <strong>
+                      <%= question_choice.text %>
+                    </strong>
+                      <p class="color_red">
+                        <%= question_choice.creative_quality.name %> <%= question_choice.score %> 
+                      </p>       
+                  <% end %>
               <% else %>
-                <span class="text-muted">
+                <span class="text-muted" class="color_red">
                   <%= question_choice.text %>
                 </span>
               <% end %>
