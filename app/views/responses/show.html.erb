@@ -12,23 +12,22 @@
         of
         <%= Question.count %>
         questions
+
        <% @p = 0 %>
        <% @e = 0 %>
        <% @c = 0 %>
-        <% @response.question_responses.each do |question_response| %>
-          <% question_response.question.question_choices.each do |question_choice| %>
-            <% if question_choice.creative_quality.name.include? "Purpose" %> 
-              <% @p += question_choice.score %>
+   
+        <% @response.question_responses.each do |qr| %>
+          <p>
+            <% if qr.question_choice.creative_quality.name == "Purpose"%> 
+              <% @p += qr.question_choice.score %> 
+            <% elsif qr.question_choice.creative_quality.name == "Empowerment" %>
+              <% @e += qr.question_choice.score %>
+            <% elsif qr.question_choice.creative_quality.name == "Collaboration" %>
+              <% @c += qr.question_choice.score %>
             <% end %>
-            <% if question_choice.creative_quality.name.include? "Empowerment" %> 
-              <% @e += question_choice.score %>
-            <% end %>
-            <% if question_choice.creative_quality.name.include? "Collaboration" %> 
-              <% @c += question_choice.score %>
-            <% end %>
-          <% end %>
+          </p>
         <% end %>
-
 
         <hr>
         <strong> Purpose </strong>
