@@ -1,9 +1,11 @@
 /* Created to color response view per specification */
 
+/* Greeen color for positive numbers */
 .color_green{
 	color: green;
 }
 
+/* Red color for negative numbers */
 .color_red{
 	color: red;
 }

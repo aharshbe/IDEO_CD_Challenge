@@ -17,36 +17,51 @@
        <% @p = 0 %>
        <% @e = 0 %>
        <% @c = 0 %>
+
+       <!-- Creates variables to store max scores for each creative quality -->
+       <% @pmax = 0 %>
+       <% @emax = 0 %>
+       <% @cmax = 0 %>
    
-        <!-- Iterate through each reasponse for given user and update respesctive variable raw scores per creative quality -->
+        <!-- Iterate through each reasponse for given user and update respesctive variable raw and max scores per creative quality -->
         <% @response.question_responses.each do |qr| %>
           <p>
             <% if qr.question_choice.creative_quality.name == "Purpose"%> 
               <% @p += qr.question_choice.score %> 
+              <% if qr.question_choice.score > 0 %>
+                <% @pmax += qr.question_choice.score %>
+              <% end %> 
             <% elsif qr.question_choice.creative_quality.name == "Empowerment" %>
               <% @e += qr.question_choice.score %>
+              <% if qr.question_choice.score > 0 %>
+                <% @emax += qr.question_choice.score %>
+              <% end %>
             <% elsif qr.question_choice.creative_quality.name == "Collaboration" %>
               <% @c += qr.question_choice.score %>
+              <% if qr.question_choice.score > 0%>
+                <% @cmax += qr.question_choice.score %>
+              <% end %>
             <% end %>
           </p>
         <% end %>
+
 
         <!-- Data display for max and raw scores per creative quality -->
         <hr>
         <strong> Purpose </strong>
         <ul>
           <li>Raw score: <%= @p %></li>
-          <li>Max score:</li>
+          <li>Max score: <%= @pmax %></li>
         </ul>
         <strong> Empowerment </strong>
         <ul>
           <li>Raw score: <%= @e %></li>
-          <li>Max score:</li>
+          <li>Max score: <%= @emax %></li>
         </ul>
         <strong> Collaboration </strong>
         <ul>
           <li>Raw score: <%= @c %></li>
-          <li>Max score:</li>
+          <li>Max score: <%= @cmax %></li>
         </ul>
       </div>
     </div>
