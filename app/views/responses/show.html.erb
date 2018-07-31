@@ -23,11 +23,6 @@
        <% @emax = 0 %>
        <% @cmax = 0 %>
 
-        <!-- Creates global variables to store max scores for each creative quality -->
-       <% $g_pmax = 0 %>
-       <% $g_cmax = 0 %>
-       <% $g_emax = 0 %>
-
         <!-- Iterate through each reasponse for given user and update respesctive variable raw and max scores per creative quality -->
         <% @response.question_responses.each do |qr| %>
           <p>
