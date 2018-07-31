@@ -34,16 +34,14 @@
               <hr>
 
               <p>
-                <strong>
-                  
+                <strong>   
                   <% if creative_quality.name == "Purpose" %>
-                    Your Score: <%= $g_pmax %>
+                    Your Score: <%= $g_preal %>
                   <% elsif creative_quality.name == "Empowerment" %>
-                    Your Score: <%= $g_emax %>
+                    Your Score: <%= $g_ereal %>
                   <% elsif creative_quality.name == "Collaboration" %>
-                    Your Score: <%= $g_cmax %>
-                  <% end %>
-                    
+                    Your Score: <%= $g_creal %>
+                  <% end %>        
                 </strong>
               </p>
             </div>

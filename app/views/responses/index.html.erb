@@ -19,7 +19,6 @@
             <td>
               <%= truncate(response.display_name, length: 90) %>
             </td>
-
             <td>
               <% if response.completed? %>
                 Yes
@@ -27,7 +26,6 @@
                 <span class="text-danger">No</span>
               <% end %>
             </td>
-
             <td>
               <%= link_to 'View', response_path(response), class: 'btn btn-default btn-xs' %>
             </td>
