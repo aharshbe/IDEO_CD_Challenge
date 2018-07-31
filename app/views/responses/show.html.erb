@@ -13,10 +13,12 @@
         <%= Question.count %>
         questions
 
+      <!-- Creates variables to store raw scores for each creative quality -->
        <% @p = 0 %>
        <% @e = 0 %>
        <% @c = 0 %>
    
+        <!-- Iterate through each reasponse for given user and update respesctive variable raw scores per creative quality -->
         <% @response.question_responses.each do |qr| %>
           <p>
             <% if qr.question_choice.creative_quality.name == "Purpose"%> 
@@ -29,6 +31,7 @@
           </p>
         <% end %>
 
+        <!-- Data display for max and raw scores per creative quality -->
         <hr>
         <strong> Purpose </strong>
         <ul>
@@ -62,16 +65,22 @@
                     <strong>
                       <%= question_choice.text %>
                     </strong>
+
+                    <!-- Added custom class to allow color.css file to color text per spec -->
                     <p class="color_green">
                       <%= question_choice.creative_quality.name %> <%= question_choice.score %> 
-                    </p>    
+                    </p>  
+
                     <% else %>
                     <strong>
                       <%= question_choice.text %>
                     </strong>
-                      <p class="color_red">
-                        <%= question_choice.creative_quality.name %> <%= question_choice.score %> 
-                      </p>       
+
+                    <!-- Added custom class to allow color.css file to color text per spec -->
+                    <p class="color_red">
+                      <%= question_choice.creative_quality.name %> <%= question_choice.score %> 
+                    </p>  
+
                   <% end %>
               <% else %>
                 <span class="text-muted" class="color_red">
