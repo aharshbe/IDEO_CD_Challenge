@@ -34,7 +34,17 @@
               <hr>
 
               <p>
-                <strong>Your Score: _______</strong>
+                <strong>
+                  
+                  <% if creative_quality.name == "Purpose" %>
+                    Your Score: <%= $g_pmax %>
+                  <% elsif creative_quality.name == "Empowerment" %>
+                    Your Score: <%= $g_emax %>
+                  <% elsif creative_quality.name == "Collaboration" %>
+                    Your Score: <%= $g_cmax %>
+                  <% end %>
+                    
+                </strong>
               </p>
             </div>
           </div>
